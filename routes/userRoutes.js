@@ -9,8 +9,8 @@ const{
 } = require("../controllers/userController.js")
 
 router.route('/').get(getAllUser)
-router.route('/:id').get(createUser)
-router.route('/').post(getUserById)
+router.route('/').post(createUser)
+router.route('/:id').get(getUserById)
 router.route('/:id').put(updateUser)
 router.route('/:id').delete(deleteUser)
 

@@ -3,19 +3,19 @@ const connection = mysql.createPool({
   host: 'localhost',
   user: 'root',
   password: "",
-  database: 'school'
+  database: 'college'
 
 });
 
 module.exports = connection
 
-let sql= "select * from students" ; 
+// let sql= "select * from students" ; 
 // connection.execute(sql, (data)=>{
 //     console.log(data)
 // })
 
-connection.query(sql).then((data) => {
-  console.log(data)
-}).catch((error) => {
-  console.log(error)
-})
+// connection.query(sql).then((data) => {
+//   console.log(data)
+// }).catch((error) => {
+//   console.log(error)
+// })

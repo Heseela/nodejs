@@ -56,6 +56,7 @@ const dotenv = require("dotenv").config();
 // const router=require("./routes/userRoutes.js")
 const router=require("./routes/studentRoutes.js")
 const db = require("./config/db.js");
+const bodyParser = require('body-parser')
 
 
 const app= express();
@@ -65,18 +66,16 @@ app.get('/', (req,res)=>{
     // res.json({message:"All details of users",data:"this is a data"})
 })
 
+
+
 // // userRoute Middleware
+app.use(bodyParser.json());
+//bodyParser chai json ma convert garna use garxam
 // // api for user
 app.use('/api/user', require("./routes/userRoutes.js"))
 
 // api for student
 app.use('/api/student',require("./routes/studentRoutes.js"))
-
-
-
-
-
-
 
 
 
