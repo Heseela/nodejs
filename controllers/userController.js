@@ -1,7 +1,7 @@
 const db =require("../config/db.js")
 const getAllUser = async (req,res) => {
     try{
-        let sqlQuery = "SELECT * from students"
+        let sqlQuery = "SELECT * from student"
         const [data] = await db.query(sqlQuery)
         res.json({message:"Get All Users", details:data})
     }catch(error){
@@ -21,7 +21,7 @@ const getAllUser = async (req,res) => {
 const getUserById = async(req,res)=>{
     try{
         let userId = req.params.id;
-        let sqlQuery = "SELECT * from students WHERE ID = ?"
+        let sqlQuery = "SELECT * from student WHERE ID = ?"
         const [data] = await db.query (sqlQuery,[userId])
 
         if (data.length===0){
@@ -38,10 +38,10 @@ const getUserById = async(req,res)=>{
 const createUser=async (req,res) => {
     try{
         const {name,address,faculty} = req.body;
-        let sqlQuery = "insert into students (name,address,faculty) values(?)";
+        let sqlQuery = "Insert into student (name,address,faculty) values (?,?,?)";
         const data = await db.query(sqlQuery,[name,address,faculty])
-        console.log(data);
-        res.status(201).json({message:"User created successfully"})
+        // console.log(data);
+        res.status(200).json({message:"User created successfully"})
 
     }catch(error){
         console.error("Error while fetching data",error)
@@ -51,7 +51,7 @@ const createUser=async (req,res) => {
 
 // const getUserById = async(req,res)=>{
 //     try {
-//         let sqlQuery = "SELECT * FROM students WHERE id = " + req.params.id
+//         let sqlQuery = "SELECT * FROM student WHERE id = " + req.params.id
 //         const [data] = await db.query(sqlQuery)
 //         res.status(200).json({ message: "Get All users", details: data })
     
